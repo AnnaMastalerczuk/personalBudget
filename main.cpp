@@ -8,13 +8,17 @@ int main()
 {
     PersonalBudget personalBudget;
     personalBudget.registerUser();
+    personalBudget.registerUser();
+    personalBudget.registerUser();
+    personalBudget.logInUser();
+    personalBudget.logInUser();
 
 
     return 0;
 }
 
 #include "UserMenager.h"
-int register_main() {
+int _main() {
 UserMenager userMenager;
 userMenager.registerUser();
 

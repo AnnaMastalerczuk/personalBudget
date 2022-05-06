@@ -13,6 +13,7 @@ class PersonalBudget{
 public:
     PersonalBudget(){};
     void registerUser();
+    void logInUser();
 
 };
 

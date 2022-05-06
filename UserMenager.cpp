@@ -1,7 +1,7 @@
 #include "UserMenager.h"
 
-void UserMenager::registerUser(){
-User user = inputDataOfNewUser();
+void UserMenager::registerUser() {
+    User user = inputDataOfNewUser();
 
     users.push_back(user);
     usersFile.addUserToFile(user);
@@ -45,4 +45,41 @@ bool UserMenager::ifLoginExist(string login) {
         }
     }
     return false;
+}
+
+int UserMenager::logInUser()
+{
+    User user;
+    string login = "", password = "";
+
+    cout << endl << "Enter login: ";
+    login = AuxiliaryMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
+            {
+                cout << "Enter password. You have " << numberOfAttempts << " attempts remained: ";
+                password = AuxiliaryMethods::loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "You are logged in" << endl << endl;
+                    system("pause");
+                    loggedUserId = itr -> getUserId();
+                    return loggedUserId;
+                }
+            }
+            cout << "Password incorrectly entered 3 times." << endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout << "There is no such user" << endl << endl;
+    system("pause");
+    return 0;
 }
