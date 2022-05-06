@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget;
+    PersonalBudget personalBudget("users.xml");
     personalBudget.registerUser();
     personalBudget.registerUser();
 
@@ -19,8 +19,8 @@ int main()
 
 #include "UserMenager.h"
 int _main() {
-UserMenager userMenager;
-userMenager.registerUser();
+//UserMenager userMenager;
+//userMenager.registerUser();
 
 return 0;
 }

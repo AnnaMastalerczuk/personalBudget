@@ -11,7 +11,7 @@ class PersonalBudget{
     UserMenager userMenager;
 
 public:
-    PersonalBudget(){};
+    PersonalBudget(string userFileName) : userMenager(userFileName){};
     void registerUser();
     void logInUser();
     void logOutUser();

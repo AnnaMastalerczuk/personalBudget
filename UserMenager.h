@@ -21,7 +21,7 @@ int getNewUserId();
 bool ifLoginExist(string login);
 
 public:
-    UserMenager(){
+    UserMenager(string userFileName) : usersFile(userFileName){
         users = usersFile.loadUsersFromFile();
     };
     //UserMenager(){};
