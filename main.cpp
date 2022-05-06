@@ -9,9 +9,9 @@ int main()
     PersonalBudget personalBudget;
     personalBudget.registerUser();
     personalBudget.registerUser();
-    personalBudget.registerUser();
+
     personalBudget.logInUser();
-    personalBudget.logInUser();
+    personalBudget.changePasswordOfLoggedUser();
 
 
     return 0;

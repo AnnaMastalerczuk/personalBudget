@@ -47,8 +47,7 @@ bool UserMenager::ifLoginExist(string login) {
     return false;
 }
 
-int UserMenager::logInUser()
-{
+int UserMenager::logInUser() {
     User user;
     string login = "", password = "";
 
@@ -56,17 +55,13 @@ int UserMenager::logInUser()
     login = AuxiliaryMethods::loadLine();
 
     vector <User>::iterator itr = users.begin();
-    while (itr != users.end())
-    {
-        if (itr -> getLogin() == login)
-        {
-            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
-            {
+    while (itr != users.end()) {
+        if (itr -> getLogin() == login) {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--) {
                 cout << "Enter password. You have " << numberOfAttempts << " attempts remained: ";
                 password = AuxiliaryMethods::loadLine();
 
-                if (itr -> getPassword() == password)
-                {
+                if (itr -> getPassword() == password) {
                     cout << endl << "You are logged in" << endl << endl;
                     system("pause");
                     loggedUserId = itr -> getUserId();
@@ -83,3 +78,26 @@ int UserMenager::logInUser()
     system("pause");
     return 0;
 }
+
+void UserMenager::logOutUser() {
+    loggedUserId = 0;
+}
+
+void UserMenager::changePasswordOfLoggedUser()
+{
+    string newPassword = "";
+    cout << "Enter new password: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getUserId() == loggedUserId)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Password has been changed" << endl << endl;
+            system("pause");
+        }
+    }
+    usersFile.addAllUsersToFile(users);
+}
+
