@@ -27,7 +27,8 @@ public:
     //UserMenager(){};
     void registerUser();
     int logInUser();
-
+    void logOutUser();
+    void changePasswordOfLoggedUser();
 };
 
 #endif

@@ -15,7 +15,7 @@ class UsersFile{
 
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
-
+    void addAllUsersToFile(vector <User> users);
 
 };
 

@@ -14,6 +14,8 @@ public:
     PersonalBudget(){};
     void registerUser();
     void logInUser();
+    void logOutUser();
+    void changePasswordOfLoggedUser();
 
 };
 

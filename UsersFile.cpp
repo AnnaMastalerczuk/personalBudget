@@ -53,3 +53,25 @@ vector <User> UsersFile::loadUsersFromFile() {
 return users;
 
 }
+
+void UsersFile::addAllUsersToFile(vector <User> users)
+{
+    CMarkup xml;
+
+    xml.AddElem("USERS");
+    xml.IntoElem();
+
+    for (int i = 0; i < users.size(); i++){
+    xml.AddElem("USER");
+    xml.IntoElem();
+    xml.AddElem("USERID", users[i].getUserId());
+    xml.AddElem("LOGIN", users[i].getLogin());
+    xml.AddElem("PASSWROD", users[i].getPassword());
+    xml.AddElem("NAME", users[i].getName());
+    xml.AddElem("SURNAME", users[i].getSurname());
+    xml.OutOfElem();
+    }
+
+    xml.Save("users.xml");
+
+}
