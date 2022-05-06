@@ -51,7 +51,7 @@ int UserMenager::logInUser() {
     User user;
     string login = "", password = "";
 
-    cout << endl << "Enter login: ";
+    cout << "Enter login: ";
     login = AuxiliaryMethods::loadLine();
 
     vector <User>::iterator itr = users.begin();

@@ -4,7 +4,7 @@ void UsersFile::addUserToFile(User user) {
 
     CMarkup xml;
 
-    if (!xml.Load("users.xml")) {
+    if (!xml.Load(getFileName())) {
         xml.AddElem("USERS");
     }
 
@@ -28,7 +28,7 @@ vector <User> UsersFile::loadUsersFromFile() {
 
     CMarkup xml;
 
-    xml.Load("users.xml");
+    xml.Load(getFileName());
 
     xml.FindElem("USERS");
     xml.IntoElem();
@@ -66,12 +66,12 @@ void UsersFile::addAllUsersToFile(vector <User> users)
     xml.IntoElem();
     xml.AddElem("USERID", users[i].getUserId());
     xml.AddElem("LOGIN", users[i].getLogin());
-    xml.AddElem("PASSWROD", users[i].getPassword());
+    xml.AddElem("PASSWORD", users[i].getPassword());
     xml.AddElem("NAME", users[i].getName());
     xml.AddElem("SURNAME", users[i].getSurname());
     xml.OutOfElem();
     }
 
-    xml.Save("users.xml");
+    xml.Save(getFileName());
 
 }
