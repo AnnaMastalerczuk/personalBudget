@@ -6,6 +6,9 @@ userMenager.registerUser();
 
 void PersonalBudget::logInUser(){
 userMenager.logInUser();
+if (userMenager.ifUserLoggedIn()) {
+        transactionMenager = new TransactionMenager(userMenager.getLoggedUserId());
+    }
 }
 
 void PersonalBudget::logOutUser(){

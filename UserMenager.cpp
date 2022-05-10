@@ -83,21 +83,30 @@ void UserMenager::logOutUser() {
     loggedUserId = 0;
 }
 
-void UserMenager::changePasswordOfLoggedUser()
-{
+void UserMenager::changePasswordOfLoggedUser() {
     string newPassword = "";
     cout << "Enter new password: ";
     newPassword = AuxiliaryMethods::loadLine();
 
-    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
-    {
-        if (itr -> getUserId() == loggedUserId)
-        {
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        if (itr -> getUserId() == loggedUserId) {
             itr -> setPassword(newPassword);
             cout << "Password has been changed" << endl << endl;
             system("pause");
         }
     }
     usersFile.addAllUsersToFile(users);
+}
+
+bool UserMenager::ifUserLoggedIn() {
+    if (loggedUserId > 0) {
+        return true;
+    }
+
+    return false;
+}
+
+int UserMenager::getLoggedUserId() {
+    return loggedUserId;
 }
 
