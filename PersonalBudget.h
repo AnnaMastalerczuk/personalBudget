@@ -28,6 +28,8 @@ public:
     void logOutUser();
     void changePasswordOfLoggedUser();
 
+    void addIncome();
+
 };
 
 

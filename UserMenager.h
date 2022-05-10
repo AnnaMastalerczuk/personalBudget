@@ -31,6 +31,7 @@ public:
     void changePasswordOfLoggedUser();
     bool ifUserLoggedIn();
     int getLoggedUserId();
+
 };
 
 #endif

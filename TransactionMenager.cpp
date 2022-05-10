@@ -1,8 +1,8 @@
 #include "TransactionMenager.h"
 
-void TransactionMenager::addIncome(){
+void TransactionMenager::addIncome() {
 
-Income income = inputDataOfNewIncome();
+    Income income = inputDataOfNewIncome();
 
     incomes.push_back(income);
     //usersFile.addUserToFile(user);
@@ -12,9 +12,20 @@ Income income = inputDataOfNewIncome();
 
 }
 
-Income TransactionMenager::inputDataOfNewIncome(){
-Income income;
+Income TransactionMenager::inputDataOfNewIncome() {
+    Income income;
+    string textString = "";
     income.setUserId(LOGGEDIN_USER_ID);
+    income.setIncomeId(getNewIncomeId());
+
+    income.setItem(income.showIncomeItemMenu());
+    cout << income.getItem() << endl;
+
+    cout << "Enter amount: ";
+    textString = AuxiliaryMethods::loadLine();
+    income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+
+
 
     /*do {
         cout << "Enter login: ";
@@ -30,4 +41,11 @@ Income income;
 
     return income;
 
+}
+
+int TransactionMenager::getNewIncomeId() {
+    if (incomes.empty() == true)
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
 }

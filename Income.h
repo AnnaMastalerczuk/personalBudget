@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "AuxiliaryMethods.h"
+
 using namespace std;
 
 class Income{
@@ -11,20 +13,22 @@ int incomeId;
 int userId;
 string date;
 string item;
-string amount;
+double amount;
 
 public:
     int getIncomeId();
     int getUserId();
     string getDate();
     string getItem();
-    string getAmount();
+    double getAmount();
 
     void setIncomeId(int incomeId);
     void setUserId(int userId);
     void setDate(string date);
     void setItem(string item);
-    void setAmount(string amount);
+    void setAmount(double amount);
+
+    string showIncomeItemMenu();
 
 };
 

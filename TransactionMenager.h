@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Income.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class TransactionMenager{
     vector <Income> incomes;
 
     Income inputDataOfNewIncome();
+    int getNewIncomeId();
 
 
 public:

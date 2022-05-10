@@ -18,3 +18,7 @@ userMenager.logOutUser();
 void PersonalBudget::changePasswordOfLoggedUser(){
 userMenager.changePasswordOfLoggedUser();
 }
+
+void PersonalBudget::addIncome(){
+transactionMenager->addIncome();
+}

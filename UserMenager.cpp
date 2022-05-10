@@ -110,3 +110,4 @@ int UserMenager::getLoggedUserId() {
     return loggedUserId;
 }
 
+
