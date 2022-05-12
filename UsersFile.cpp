@@ -18,7 +18,7 @@ void UsersFile::addUserToFile(User user) {
     xml.AddElem("NAME", user.getName());
     xml.AddElem("SURNAME", user.getSurname());
     xml.OutOfElem();
-    xml.Save("users.xml");
+    xml.Save(getFileName());
 
 }
 
