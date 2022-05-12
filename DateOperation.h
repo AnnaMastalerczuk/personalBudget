@@ -17,9 +17,10 @@ class DateOperation{
     Date divideDate(string date);
     int numberOfDaysInMonth(Date date);
     string removeDash(string date);
+    int conwertDataStringToInt(string data);
 
 public:
-   string chooseDate();
+   int chooseDate();
 
 };
 

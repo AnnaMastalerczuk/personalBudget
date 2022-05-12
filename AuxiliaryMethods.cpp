@@ -31,5 +31,13 @@ double AuxiliaryMethods::conversionStringToDouble(string textString){
     iss >> numberDouble;
 
     return numberDouble;
+}
 
+int AuxiliaryMethods::conversionStringToInt(string textString){
+
+    int numberInt;
+    istringstream iss(textString);
+    iss >> numberInt;
+
+    return numberInt;
 }

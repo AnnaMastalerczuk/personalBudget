@@ -1,7 +1,8 @@
 #include "DateOperation.h"
 
-string DateOperation::chooseDate() {
-    string date = "";
+int DateOperation::chooseDate() {
+    string dateString = "";
+    int dateInt = 0;
     char choice = ' ';
 
     cout << "Choose the date: " << endl;
@@ -11,14 +12,14 @@ string DateOperation::chooseDate() {
     cin.sync();
 
     if (choice == '1') {
-        date = getCurrentDate();
+        dateString = getCurrentDate();
     } else if (choice == '2') {
-        date = setDateByUser();
+        dateString = setDateByUser();
     }
 
-    //cout << date << endl;
-    return date;
+    dateInt = AuxiliaryMethods::conversionStringToInt(removeDash(dateString));
 
+    return dateInt;
 }
 
 string DateOperation::getCurrentDate() {
@@ -29,8 +30,9 @@ string DateOperation::getCurrentDate() {
 
     string currentData = currentDataChar;
 
-    return currentData;
+    cout << currentData << endl;
 
+    return currentData;
 }
 
 string DateOperation::setDateByUser() {
@@ -43,13 +45,10 @@ string DateOperation::setDateByUser() {
     ifDateCorrect = isDateCorrect(userDate);
     } while (ifDateCorrect == false);
 
-    userDate = removeDash(userDate);
     cout << userDate << endl;
 
     return userDate;
-
 }
-
 
 bool DateOperation::isDateCorrect(string userDate) {
     Date date = divideDate(userDate);
@@ -83,7 +82,6 @@ Date DateOperation::divideDate(string userDate) {
     }
 
     return date;
-
 }
 
 int DateOperation::numberOfDaysInMonth(Date date) {
@@ -109,7 +107,6 @@ string DateOperation::removeDash(string date){
 string newDate = date.erase(4,1);
 newDate = date.erase(6,1);
 
-cout << newDate << endl;
 return newDate;
-
 }
+
