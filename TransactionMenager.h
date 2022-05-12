@@ -6,12 +6,13 @@
 
 #include "Income.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperation.h"
 
 using namespace std;
 
 class TransactionMenager{
 
-    Income income;
+    //Income income;
 
     const int LOGGEDIN_USER_ID;
     vector <Income> incomes;

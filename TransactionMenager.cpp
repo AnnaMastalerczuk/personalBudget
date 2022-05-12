@@ -14,9 +14,13 @@ void TransactionMenager::addIncome() {
 
 Income TransactionMenager::inputDataOfNewIncome() {
     Income income;
+    DateOperation dateOperation;
+
     string textString = "";
     income.setUserId(LOGGEDIN_USER_ID);
     income.setIncomeId(getNewIncomeId());
+
+    income.setDate(dateOperation.chooseDate());
 
     income.setItem(income.showIncomeItemMenu());
     cout << income.getItem() << endl;
