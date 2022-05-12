@@ -9,7 +9,7 @@ int _main()
 
     double suma = 55.55 +45.45;
     cout << suma << endl;
-    PersonalBudget personalBudget("users.xml");
+    PersonalBudget personalBudget("users.xml", "incomes.xml");
     //personalBudget.registerUser();
     //personalBudget.registerUser();
 
@@ -31,8 +31,9 @@ return 0;
 
 #include "TransactionMenager.h"
 int main(){
-TransactionMenager transactionMenager(1);
-transactionMenager.addIncome();
+TransactionMenager transactionMenager(1, "incomes.xml");
+//transactionMenager.addIncome();
+transactionMenager.show();
 
 return 0;
 }

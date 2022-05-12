@@ -30,8 +30,6 @@ string DateOperation::getCurrentDate() {
 
     string currentData = currentDataChar;
 
-    cout << currentData << endl;
-
     return currentData;
 }
 
@@ -44,8 +42,6 @@ string DateOperation::setDateByUser() {
     userDate = AuxiliaryMethods::loadLine();
     ifDateCorrect = isDateCorrect(userDate);
     } while (ifDateCorrect == false);
-
-    cout << userDate << endl;
 
     return userDate;
 }
@@ -108,5 +104,14 @@ string newDate = date.erase(4,1);
 newDate = date.erase(6,1);
 
 return newDate;
+}
+
+string DateOperation::convertDataFromIntToString(int dataInt){
+string data = AuxiliaryMethods::conversionIntToString(dataInt);
+data = data.insert(4,"-");
+data = data.insert(7,"-");
+
+return data;
+
 }
 

@@ -29,9 +29,10 @@ double AuxiliaryMethods::conversionStringToDouble(string textString){
     double numberDouble;
     istringstream iss(textString);
     iss >> numberDouble;
-
+//double numberDouble = stod(textString);
     return numberDouble;
 }
+
 
 int AuxiliaryMethods::conversionStringToInt(string textString){
 
@@ -40,4 +41,18 @@ int AuxiliaryMethods::conversionStringToInt(string textString){
     iss >> numberInt;
 
     return numberInt;
+}
+
+string AuxiliaryMethods::conversionIntToString(int number){
+stringstream ss;
+ss << number;
+string str = ss.str();
+return str;
+}
+
+string AuxiliaryMethods::conversionDoubleToString(double number){
+stringstream ss;
+ss << number;
+string str = ss.str();
+return str;
 }

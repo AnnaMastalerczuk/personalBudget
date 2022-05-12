@@ -10,12 +10,8 @@ class XMLFile {
 const string FILE_NAME;
 
 public:
-
     XMLFile(string userFileName) : FILE_NAME(userFileName) {};
-
     string getFileName();
-
-
 };
 
 #endif
