@@ -7,7 +7,7 @@ userMenager.registerUser();
 void PersonalBudget::logInUser(){
 userMenager.logInUser();
 if (userMenager.ifUserLoggedIn()) {
-        transactionMenager = new TransactionMenager(userMenager.getLoggedUserId(), INCOME_FILE_NAME);
+        transactionMenager = new TransactionMenager(userMenager.getLoggedUserId(), INCOME_FILE_NAME, EXPENSE_FILE_NAME);
     }
 }
 
@@ -21,4 +21,8 @@ userMenager.changePasswordOfLoggedUser();
 
 void PersonalBudget::addIncome(){
 transactionMenager->addIncome();
+}
+
+void PersonalBudget::addExpense(){
+transactionMenager->addExpense();
 }

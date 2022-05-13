@@ -13,10 +13,12 @@ class PersonalBudget{
     TransactionMenager *transactionMenager;
 
     const string INCOME_FILE_NAME;
+    const string EXPENSE_FILE_NAME;
 
 
 public:
-    PersonalBudget(string userFileName, string incomeFileName) : userMenager(userFileName), INCOME_FILE_NAME(incomeFileName){
+    PersonalBudget(string userFileName, string incomeFileName, string expenseFileName) : userMenager(userFileName), INCOME_FILE_NAME(incomeFileName),
+    EXPENSE_FILE_NAME(expenseFileName){
     transactionMenager = NULL;
     };
 
@@ -31,6 +33,7 @@ public:
     void changePasswordOfLoggedUser();
 
     void addIncome();
+    void addExpense();
 
 };
 

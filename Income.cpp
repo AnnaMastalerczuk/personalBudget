@@ -57,7 +57,7 @@ string Income::showIncomeItemMenu() {
 
     switch( choice ) {
     case '1':
-        return text = "salary";
+        return text = "Salary";
         break;
 
     case '2':
@@ -65,7 +65,7 @@ string Income::showIncomeItemMenu() {
         break;
 
     case '3':
-        text = "sale on Allegro";
+        text = "Sale on Allegro";
         break;
 
     case '4':
