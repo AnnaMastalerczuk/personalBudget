@@ -11,7 +11,7 @@ using namespace std;
 
 class DateOperation{
 
-    string getCurrentDate();
+
     string setDateByUser();
     bool isDateCorrect(string date);
     Date divideDate(string date);
@@ -21,6 +21,8 @@ public:
    int chooseDate();
    string convertDataFromIntToString(int data);
    string removeDash(string date);
+   int getDateFirstDayOfCurrentMonth();
+   string getCurrentDate();
 
 };
 

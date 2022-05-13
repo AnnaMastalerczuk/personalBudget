@@ -28,6 +28,8 @@ class TransactionMenager{
     Expense inputDataOfNewExpense();
     int getNewExpenseId();
 
+    void showTransactionBalance();
+
 
 public:
     TransactionMenager(int loggedUserId, string incomeFileName, string expenseFileName)
@@ -40,6 +42,7 @@ public:
     void addIncome();
     void addExpense();
     void show();
+    void showBalanceCurrentMonth();
 
 };
 

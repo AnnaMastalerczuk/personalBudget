@@ -31,11 +31,11 @@ return 0;
 
 #include "TransactionMenager.h"
 int main(){
-TransactionMenager transactionMenager(2, "incomes.xml", "expense.xml");
+TransactionMenager transactionMenager(1, "incomes.xml", "expense.xml");
 //transactionMenager.addIncome();
 //transactionMenager.show();
 //transactionMenager.addExpense();
-transactionMenager.show();
+transactionMenager.showBalanceCurrentMonth();
 
 return 0;
 }

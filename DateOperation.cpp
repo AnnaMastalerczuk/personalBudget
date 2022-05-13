@@ -115,3 +115,14 @@ return data;
 
 }
 
+int DateOperation::getDateFirstDayOfCurrentMonth(){
+    string dataString = "";
+    int dataInt = 0;
+    dataString = removeDash(getCurrentDate());
+    dataString = dataString.replace(6,2,"01");
+    dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
+
+    return dataInt;
+
+}
+
