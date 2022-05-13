@@ -44,13 +44,17 @@ void TransactionMenager::show() {
     for (int i = 0; i < incomes.size(); i++) {
         cout << incomes[i].getAmount() << endl;
     }
+
+        for (int i = 0; i < expenses.size(); i++) {
+        cout << expenses[i].getAmount() << endl;
+    }
 }
 
 void TransactionMenager::addExpense(){
 Expense expense = inputDataOfNewExpense();
 
     expenses.push_back(expense);
-    //incomeFile.addIncomeToFile(income);
+    expenseFile.addExpenseToFile(expense);
 
     cout << endl << "The expense has been added successfully" << endl;
     system("pause");
