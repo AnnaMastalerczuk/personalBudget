@@ -31,6 +31,7 @@ public:
     void changePasswordOfLoggedUser();
 
     void addIncome();
+    void addExpense();
 
 };
 

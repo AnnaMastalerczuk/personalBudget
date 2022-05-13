@@ -22,3 +22,7 @@ userMenager.changePasswordOfLoggedUser();
 void PersonalBudget::addIncome(){
 transactionMenager->addIncome();
 }
+
+void PersonalBudget::addExpense(){
+transactionMenager->addExpense();
+}
