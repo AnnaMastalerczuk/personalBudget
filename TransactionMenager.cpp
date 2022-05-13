@@ -47,12 +47,39 @@ void TransactionMenager::show() {
 }
 
 void TransactionMenager::addExpense(){
-Income income = inputDataOfNewIncome();
+Expense expense = inputDataOfNewExpense();
 
-    incomes.push_back(income);
-    incomeFile.addIncomeToFile(income);
+    expenses.push_back(expense);
+    //incomeFile.addIncomeToFile(income);
 
-    cout << endl << "The income has been added successfully" << endl;
+    cout << endl << "The expense has been added successfully" << endl;
     system("pause");
 
+}
+
+Expense TransactionMenager::inputDataOfNewExpense() {
+    Expense expense;
+    DateOperation dateOperation;
+
+    string textString = "";
+    expense.setUserId(LOGGEDIN_USER_ID);
+    expense.setExpenseId(getNewExpenseId());
+
+    expense.setDate(dateOperation.chooseDate());
+
+    expense.setItem(expense.showExpenseItemMenu());
+
+    cout << "Enter amount: ";
+    textString = AuxiliaryMethods::loadLine();
+    expense.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+
+    //cout << income.getAmount() << endl;
+    return expense;
+}
+
+int TransactionMenager::getNewExpenseId() {
+    if (expenses.empty() == true)
+        return 1;
+    else
+        return expenses.back().getExpenseId() + 1;
 }

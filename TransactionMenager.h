@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Income.h"
+#include "Expense.h"
 #include "AuxiliaryMethods.h"
 #include "DateOperation.h"
 #include "IncomeFile.h"
@@ -18,9 +19,12 @@ class TransactionMenager{
 
     const int LOGGEDIN_USER_ID;
     vector <Income> incomes;
+    vector <Expense> expenses;
 
     Income inputDataOfNewIncome();
     int getNewIncomeId();
+    Expense inputDataOfNewExpense();
+    int getNewExpenseId();
 
 
 public:

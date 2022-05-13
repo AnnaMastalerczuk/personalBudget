@@ -33,7 +33,8 @@ return 0;
 int main(){
 TransactionMenager transactionMenager(1, "incomes.xml");
 //transactionMenager.addIncome();
-transactionMenager.show();
+//transactionMenager.show();
+transactionMenager.addExpense();
 
 return 0;
 }
