@@ -35,7 +35,7 @@ TransactionMenager transactionMenager(1, "incomes.xml", "expense.xml");
 //transactionMenager.addIncome();
 //transactionMenager.show();
 //transactionMenager.addExpense();
-transactionMenager.showBalanceCurrentMonth();
+transactionMenager.showBalancePreviousMonth();
 
 return 0;
 }

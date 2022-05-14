@@ -94,8 +94,14 @@ void TransactionMenager::showBalanceCurrentMonth() {
     int endDate = dateOperation.getDateLastDayOfCurrentMonth();
 
     showTransactionBalance(startDate, endDate);
+}
 
+void TransactionMenager::showBalancePreviousMonth(){
+    DateOperation dateOperation;
+    int startDate = dateOperation.getDateFirstDayOfPreviousMonth();
+    int endDate = dateOperation.getDateLastDayOfPreviousMonth();
 
+    showTransactionBalance(startDate, endDate);
 }
 
 //1. posortowaæ wektor incomes i expenses wg daty (od najstarszej) i od najwiêkszej kwoty.
@@ -107,7 +113,6 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     sortExpensesTransaction();
 
     DateOperation dateOperation;
-
 
     cout << "INCOMES:" << endl;
     for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
