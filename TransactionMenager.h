@@ -49,8 +49,7 @@ public:
     void show();
     void showBalanceCurrentMonth();
     void showBalancePreviousMonth();
-
-
+    void showBalanceSelectedPeriod();
 
 };
 

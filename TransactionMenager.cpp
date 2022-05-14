@@ -104,6 +104,17 @@ void TransactionMenager::showBalancePreviousMonth(){
     showTransactionBalance(startDate, endDate);
 }
 
+void TransactionMenager::showBalanceSelectedPeriod(){
+    DateOperation dateOperation;
+    cout << "INPUT START DATE" << endl;
+    int startDate = dateOperation.chooseDate();
+    cout << "INPUT END DATE" << endl;
+    int endDate = dateOperation.chooseDate();
+
+    showTransactionBalance(startDate, endDate);
+
+}
+
 //1. posortowaæ wektor incomes i expenses wg daty (od najstarszej) i od najwiêkszej kwoty.
 //2. wyswietl id, amount i data i item -> dla danych dat
 //3. poka¿ sume incomes i expenses i roznice miedzy nimi
@@ -124,7 +135,6 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
             cout << "---------------" << endl;
         }
     }
-
         cout << "EXPENSES:" << endl;
     for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
         if (itr->getDate() >= startDate && itr->getDate() <= endDate){
@@ -135,32 +145,6 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
             cout << "---------------" << endl;
         }
     }
-
-
-
-    /*for (int i = 0; i < incomes.size(); i++) {
-        if (incomes[i].getDate() >= startDate && incomes[i].getDate() <= endDate) {
-            //cout << incomes[i].getIncomeId() "----" dateOperation.convertDataFromIntToString(incomes[i].getDate()) "----" incomes[i].getAmount() << endl;
-            cout << incomes[i].getIncomeId() << endl;
-            cout << dateOperation.convertDataFromIntToString(incomes[i].getDate()) << endl;
-            cout << incomes[i].getAmount() << endl;
-            cout << incomes[i].getItem() << endl;
-            cout << "---------------" << endl;
-        }
-    }
-
-    cout << "EXPENSES:" << endl;
-    for (int i = 0; i < expenses.size(); i++) {
-        if (expenses[i].getDate() >= dateOperation.getDateFirstDayOfCurrentMonth()
-                && expenses[i].getDate() <= dateOperation.getDateLastDayOfCurrentMonth()) {
-            //cout << incomes[i].getIncomeId() "----" dateOperation.convertDataFromIntToString(incomes[i].getDate()) "----" incomes[i].getAmount() << endl;
-            cout << expenses[i].getExpenseId() << endl;
-            cout << dateOperation.convertDataFromIntToString(expenses[i].getDate()) << endl;
-            cout << expenses[i].getAmount() << endl;
-            cout << expenses[i].getItem() << endl;
-            cout << "---------------" << endl;
-        }
-    }*/
 }
 
 void TransactionMenager::sortIncomesTransaction() {

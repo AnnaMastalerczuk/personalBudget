@@ -11,9 +11,7 @@ using namespace std;
 
 class DateOperation {
 
-
     string setDateByUser();
-
     bool isDateCorrect(string date);
     Date divideDate(string date);
     int numberOfDaysInMonth(Date date);
@@ -23,6 +21,7 @@ public:
     string convertDataFromIntToString(int data);
     string getCurrentDate();
     string removeDash(string date);
+
     int getDateFirstDayOfCurrentMonth();
     int getDateLastDayOfCurrentMonth();
     int getDateFirstDayOfPreviousMonth();
