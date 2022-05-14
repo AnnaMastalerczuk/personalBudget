@@ -122,10 +122,30 @@ int DateOperation::getDateFirstDayOfCurrentMonth(){
     dataString = dataString.replace(6,2,"01");
     dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
 
-    //cout << dataInt << endl;
+    return dataInt;
+}
+
+int DateOperation::getDateFirstDayOfPreviousMonth(){
+    string dataString = "";
+    int dataInt = 0;
+    Date date;
+    dataString = getCurrentDate();
+    date = divideDate(dataString);
+    if (date.getMonth() == 1){
+        date.setYear(date.getYear()-1);
+        date.setMonth(12);
+    } else {
+    date.setMonth(date.getMonth()-1);
+    }
+
+    if (date.getMonth() > 0 && date.getMonth() < 10){
+        dataString = AuxiliaryMethods::conversionIntToString(date.getYear()) + "0" + AuxiliaryMethods::conversionIntToString(date.getMonth()) + "01";
+    } else {
+        dataString = AuxiliaryMethods::conversionIntToString(date.getYear()) + AuxiliaryMethods::conversionIntToString(date.getMonth()) + "01";
+    }
+    dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
 
     return dataInt;
-
 }
 
 int DateOperation::getDateLastDayOfCurrentMonth(){
@@ -139,9 +159,34 @@ int DateOperation::getDateLastDayOfCurrentMonth(){
     dataString = (removeDash(dataString)).replace(6,2,AuxiliaryMethods::conversionIntToString(numberOfDays));
     dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
 
-    //cout << dataInt << endl;
-
     return dataInt;
 
+}
+
+int DateOperation::getDateLastDayOfPreviousMonth(){
+    string dataString = "";
+    int dataInt = 0;
+    int numberOfDays = 0;
+    Date date;
+    dataString = getCurrentDate();
+    date = divideDate(dataString);
+    if (date.getMonth() == 1){
+        date.setYear(date.getYear()-1);
+        date.setMonth(12);
+    } else {
+    date.setMonth(date.getMonth()-1);
+    }
+
+    numberOfDays = numberOfDaysInMonth(date);
+
+    if (date.getMonth() > 0 && date.getMonth() < 10){
+        dataString = AuxiliaryMethods::conversionIntToString(date.getYear()) + "0" + AuxiliaryMethods::conversionIntToString(date.getMonth()) + AuxiliaryMethods::conversionIntToString(numberOfDays);
+    } else {
+        dataString = AuxiliaryMethods::conversionIntToString(date.getYear()) + AuxiliaryMethods::conversionIntToString(date.getMonth()) + AuxiliaryMethods::conversionIntToString(numberOfDays);
+    }
+
+    dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
+
+    return dataInt;
 }
 

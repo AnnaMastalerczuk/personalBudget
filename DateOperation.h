@@ -26,6 +26,7 @@ public:
     int getDateFirstDayOfCurrentMonth();
     int getDateLastDayOfCurrentMonth();
     int getDateFirstDayOfPreviousMonth();
+    int getDateLastDayOfPreviousMonth();
 
 
 };
