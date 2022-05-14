@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 
+#include <algorithm>
+#include <functional>
+
 #include "Income.h"
 #include "Expense.h"
 #include "AuxiliaryMethods.h"
@@ -28,6 +31,10 @@ class TransactionMenager{
     Expense inputDataOfNewExpense();
     int getNewExpenseId();
 
+    void showTransactionBalance(int startDate, int endDate);
+    void sortIncomesTransaction();
+    void sortExpensesTransaction();
+
 
 public:
     TransactionMenager(int loggedUserId, string incomeFileName, string expenseFileName)
@@ -40,6 +47,9 @@ public:
     void addIncome();
     void addExpense();
     void show();
+    void showBalanceCurrentMonth();
+
+
 
 };
 

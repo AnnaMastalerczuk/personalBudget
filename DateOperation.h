@@ -9,18 +9,24 @@
 
 using namespace std;
 
-class DateOperation{
+class DateOperation {
 
-    string getCurrentDate();
+
     string setDateByUser();
+
     bool isDateCorrect(string date);
     Date divideDate(string date);
     int numberOfDaysInMonth(Date date);
 
 public:
-   int chooseDate();
-   string convertDataFromIntToString(int data);
-   string removeDash(string date);
+    int chooseDate();
+    string convertDataFromIntToString(int data);
+    string getCurrentDate();
+    string removeDash(string date);
+    int getDateFirstDayOfCurrentMonth();
+    int getDateLastDayOfCurrentMonth();
+    int getDateFirstDayOfPreviousMonth();
+
 
 };
 
