@@ -122,6 +122,25 @@ int DateOperation::getDateFirstDayOfCurrentMonth(){
     dataString = dataString.replace(6,2,"01");
     dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
 
+    //cout << dataInt << endl;
+
+    return dataInt;
+
+}
+
+int DateOperation::getDateLastDayOfCurrentMonth(){
+    string dataString = "";
+    int dataInt = 0;
+    int numberOfDays = 0;
+    Date date;
+    dataString = getCurrentDate();
+    date = divideDate(dataString);
+    numberOfDays = numberOfDaysInMonth(date);
+    dataString = (removeDash(dataString)).replace(6,2,AuxiliaryMethods::conversionIntToString(numberOfDays));
+    dataInt = AuxiliaryMethods::conversionStringToInt(dataString);
+
+    //cout << dataInt << endl;
+
     return dataInt;
 
 }
