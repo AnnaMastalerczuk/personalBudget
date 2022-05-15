@@ -54,7 +54,6 @@ bool DateOperation::isDateCorrect(string userDate) {
     int startingYear = 2000;
     int startingMonth = 1;
     int startingDay = 1;
-//int numberOfDaysInCurrentMonth = numberOfDaysInMonth(currentDate);
     int numberOfDaysInUserMonth = numberOfDaysInMonth(date);
 
     if (date.getYear() >= startingYear && date.getMonth() > 0 && date.getMonth() < 13 && date.getDay() > 0 && date.getDay() <= numberOfDaysInUserMonth) {
@@ -73,8 +72,6 @@ Date DateOperation::divideDate(string userDate) {
         date.setYear(atoi(userDate.substr(0,4).c_str()));
         date.setMonth(atoi(userDate.substr(5,2).c_str()));
         date.setDay(atoi(userDate.substr(8,2).c_str()));
-
-        //cout << date.getYear() << " " << date.getMonth() << " " << date.getDay() << endl;
     }
 
     return date;

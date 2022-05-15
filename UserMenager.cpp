@@ -102,7 +102,6 @@ bool UserMenager::ifUserLoggedIn() {
     if (loggedUserId > 0) {
         return true;
     }
-
     return false;
 }
 

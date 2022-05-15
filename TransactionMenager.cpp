@@ -28,7 +28,6 @@ Income TransactionMenager::inputDataOfNewIncome() {
     textString = AuxiliaryMethods::loadLine();
     income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
 
-    //cout << income.getAmount() << endl;
     return income;
 
 }
@@ -115,17 +114,20 @@ void TransactionMenager::showBalanceSelectedPeriod(){
 
 }
 
-//1. posortowaæ wektor incomes i expenses wg daty (od najstarszej) i od najwiêkszej kwoty.
-//2. wyswietl id, amount i data i item -> dla danych dat
 //3. poka¿ sume incomes i expenses i roznice miedzy nimi
 
 void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     sortIncomesTransaction();
     sortExpensesTransaction();
+    double sumIncomes = 0;
+    double sumExpenses = 0;
+    bool isIncome = false;
+    bool isExpense = false;
 
     DateOperation dateOperation;
 
-    cout << "INCOMES:" << endl;
+    cout << "   >>> INCOMES <<<   " << endl;
+    cout << "---------------------" << endl;
     for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
         if (itr->getDate() >= startDate && itr->getDate() <= endDate){
             cout << itr->getIncomeId() << endl;
@@ -133,9 +135,17 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
+            sumIncomes += itr->getAmount();
+            isIncome = true;
         }
     }
-        cout << "EXPENSES:" << endl;
+
+    if (!isIncome){
+        cout << "There is no incomes in this period" << endl;
+    }
+
+    cout << "   >>> EXPENSES <<<   " << endl;
+    cout << "----------------------" << endl;
     for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
         if (itr->getDate() >= startDate && itr->getDate() <= endDate){
             cout << itr->getExpenseId() << endl;
@@ -143,8 +153,19 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
+            sumExpenses += itr->getAmount();
+            isExpense = true;
         }
     }
+
+        if (!isExpense){
+        cout << "There is no expenes in this period" << endl;
+    }
+
+    cout << endl << "Sum of incomes = " << sumIncomes << endl;
+    cout << "Sum of expenses = " << sumExpenses << endl;
+    cout << "Balance between incomes and expenses = " << sumIncomes - sumExpenses << endl;
+    system("pause");
 }
 
 void TransactionMenager::sortIncomesTransaction() {
