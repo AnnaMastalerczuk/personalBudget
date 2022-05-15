@@ -14,7 +14,7 @@ void UsersFile::addUserToFile(User user) {
     xml.IntoElem();
     xml.AddElem("USERID", user.getUserId());
     xml.AddElem("LOGIN", user.getLogin());
-    xml.AddElem("PASSWROD", user.getPassword());
+    xml.AddElem("PASSWORD", user.getPassword());
     xml.AddElem("NAME", user.getName());
     xml.AddElem("SURNAME", user.getSurname());
     xml.OutOfElem();
