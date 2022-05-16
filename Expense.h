@@ -13,20 +13,20 @@ int expenseId;
 int userId;
 int date;
 string item;
-double amount;
+string amount;
 
 public:
     int getExpenseId();
     int getUserId();
     int getDate();
     string getItem();
-    double getAmount();
+    string getAmount();
 
     void setExpenseId(int expenseId);
     void setUserId(int userId);
     void setDate(int date);
     void setItem(string item);
-    void setAmount(double amount);
+    void setAmount(string amount);
 
     string showExpenseItemMenu();
 };

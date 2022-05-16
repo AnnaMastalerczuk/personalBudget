@@ -16,7 +16,7 @@ string Income::getItem() {
     return item;
 }
 
-double Income::getAmount() {
+string Income::getAmount() {
     return amount;
 }
 
@@ -36,7 +36,7 @@ void Income::setItem(string item) {
     this->item = item;
 }
 
-void Income::setAmount(double amount) {
+void Income::setAmount(string amount) {
     this->amount = amount;
 }
 
@@ -71,6 +71,7 @@ string Income::showIncomeItemMenu() {
     case '4':
         cout << "Input your own source of income: ";
         text = AuxiliaryMethods::loadLine();
+        cout << endl;
         break;
 
     default:

@@ -72,10 +72,10 @@ return 0;
 #include "TransactionMenager.h"
 int _main(){
 TransactionMenager transactionMenager(1, "incomes.xml", "expense.xml");
-//transactionMenager.addIncome();
+transactionMenager.addIncome();
 //transactionMenager.show();
 //transactionMenager.addExpense();
-transactionMenager.addExpense();
+//transactionMenager.addExpense();
 
 return 0;
 }

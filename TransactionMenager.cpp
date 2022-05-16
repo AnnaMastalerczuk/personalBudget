@@ -26,10 +26,10 @@ Income TransactionMenager::inputDataOfNewIncome() {
 
     cout << "Enter amount: ";
     textString = AuxiliaryMethods::loadLine();
-    income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+    textString = AuxiliaryMethods::addZerosAtTheEnd(AuxiliaryMethods::replaceCommaWithDot(textString));
+    income.setAmount(textString);
 
     return income;
-
 }
 
 int TransactionMenager::getNewIncomeId() {
@@ -74,9 +74,9 @@ Expense TransactionMenager::inputDataOfNewExpense() {
 
     cout << "Enter amount: ";
     textString = AuxiliaryMethods::loadLine();
-    expense.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+    textString = AuxiliaryMethods::addZerosAtTheEnd(AuxiliaryMethods::replaceCommaWithDot(textString));
+    expense.setAmount(textString);
 
-    //cout << income.getAmount() << endl;
     return expense;
 }
 
@@ -114,8 +114,6 @@ void TransactionMenager::showBalanceSelectedPeriod(){
 
 }
 
-//3. poka¿ sume incomes i expenses i roznice miedzy nimi
-
 void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     sortIncomesTransaction();
     sortExpensesTransaction();
@@ -130,12 +128,11 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     cout << "---------------------" << endl;
     for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
         if (itr->getDate() >= startDate && itr->getDate() <= endDate){
-            cout << itr->getIncomeId() << endl;
             cout << dateOperation.convertDataFromIntToString(itr->getDate()) << endl;
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
-            sumIncomes += itr->getAmount();
+            sumIncomes += AuxiliaryMethods::conversionStringToDouble(itr->getAmount());
             isIncome = true;
         }
     }
@@ -148,12 +145,11 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     cout << "----------------------" << endl;
     for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
         if (itr->getDate() >= startDate && itr->getDate() <= endDate){
-            cout << itr->getExpenseId() << endl;
             cout << dateOperation.convertDataFromIntToString(itr->getDate()) << endl;
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
-            sumExpenses += itr->getAmount();
+            sumExpenses += AuxiliaryMethods::conversionStringToDouble(itr->getAmount());
             isExpense = true;
         }
     }
