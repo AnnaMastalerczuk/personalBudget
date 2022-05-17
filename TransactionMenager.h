@@ -27,9 +27,7 @@ class TransactionMenager{
     vector <Expense> expenses;
 
     Income inputDataOfNewIncome();
-    int getNewIncomeId();
     Expense inputDataOfNewExpense();
-    int getNewExpenseId();
 
     void showTransactionBalance(int startDate, int endDate);
     void sortIncomesTransaction();
@@ -39,7 +37,6 @@ class TransactionMenager{
 public:
     TransactionMenager(int loggedUserId, string incomeFileName, string expenseFileName)
     : LOGGEDIN_USER_ID(loggedUserId), incomeFile(incomeFileName), expenseFile(expenseFileName){
-        //plikzAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci,ID_ZALOGOWANEGO_UZYTKOWNIKA);
         incomes = incomeFile.loadIncomeFromFile(LOGGEDIN_USER_ID);
         expenses = expenseFile.loadExpenseFromFile(LOGGEDIN_USER_ID);
     }

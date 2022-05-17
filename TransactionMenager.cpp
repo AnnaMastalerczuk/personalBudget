@@ -18,7 +18,7 @@ Income TransactionMenager::inputDataOfNewIncome() {
 
     string textString = "";
     income.setUserId(LOGGEDIN_USER_ID);
-    income.setIncomeId(getNewIncomeId());
+    income.setIncomeId(incomeFile.getIncomeLastId() + 1);
 
     income.setDate(dateOperation.chooseDate());
 
@@ -26,18 +26,12 @@ Income TransactionMenager::inputDataOfNewIncome() {
 
     cout << "Enter amount: ";
     textString = AuxiliaryMethods::loadLine();
-    income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+    textString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::replaceCommaWithDot(textString));
+    income.setAmount(textString);
+    //income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
 
-    //cout << income.getAmount() << endl;
     return income;
 
-}
-
-int TransactionMenager::getNewIncomeId() {
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getIncomeId() + 1;
 }
 
 void TransactionMenager::show() {
@@ -67,7 +61,7 @@ Expense TransactionMenager::inputDataOfNewExpense() {
 
     string textString = "";
     expense.setUserId(LOGGEDIN_USER_ID);
-    expense.setExpenseId(getNewExpenseId());
+    expense.setExpenseId(expenseFile.getExpenseLastId() + 1);
 
     expense.setDate(dateOperation.chooseDate());
 
@@ -75,18 +69,13 @@ Expense TransactionMenager::inputDataOfNewExpense() {
 
     cout << "Enter amount: ";
     textString = AuxiliaryMethods::loadLine();
-    expense.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
+    textString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::replaceCommaWithDot(textString));
+    expense.setAmount(textString);
+    //expense.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
 
-    //cout << income.getAmount() << endl;
     return expense;
 }
 
-int TransactionMenager::getNewExpenseId() {
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getExpenseId() + 1;
-}
 
 void TransactionMenager::showBalanceCurrentMonth() {
     DateOperation dateOperation;
@@ -96,7 +85,7 @@ void TransactionMenager::showBalanceCurrentMonth() {
     showTransactionBalance(startDate, endDate);
 }
 
-void TransactionMenager::showBalancePreviousMonth(){
+void TransactionMenager::showBalancePreviousMonth() {
     DateOperation dateOperation;
     int startDate = dateOperation.getDateFirstDayOfPreviousMonth();
     int endDate = dateOperation.getDateLastDayOfPreviousMonth();
@@ -104,58 +93,88 @@ void TransactionMenager::showBalancePreviousMonth(){
     showTransactionBalance(startDate, endDate);
 }
 
-void TransactionMenager::showBalanceSelectedPeriod(){
+void TransactionMenager::showBalanceSelectedPeriod() {
     DateOperation dateOperation;
-    cout << "INPUT START DATE" << endl;
-    int startDate = dateOperation.chooseDate();
-    cout << "INPUT END DATE" << endl;
-    int endDate = dateOperation.chooseDate();
+    bool ifCorrect = true;
+    int startDate = 0;
+    int endDate = 0;
+    do {
+        cout << "INPUT START DATE" << endl;
+        startDate = dateOperation.chooseDate();
+        cout << "INPUT END DATE" << endl;
+        endDate = dateOperation.chooseDate();
+        if (startDate >= endDate) {
+            ifCorrect = false;
+            cout << "The provided dates are incorrect. Input dates once again." << endl;
+            cout << endl;
+        } else {
+            ifCorrect = true;
+        }
+    } while (!ifCorrect);
 
     showTransactionBalance(startDate, endDate);
-
 }
 
-//1. posortowaæ wektor incomes i expenses wg daty (od najstarszej) i od najwiêkszej kwoty.
-//2. wyswietl id, amount i data i item -> dla danych dat
-//3. poka¿ sume incomes i expenses i roznice miedzy nimi
 
 void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     sortIncomesTransaction();
     sortExpensesTransaction();
+    double sumIncomes = 0;
+    double sumExpenses = 0;
+    bool isIncome = false;
+    bool isExpense = false;
 
     DateOperation dateOperation;
 
-    cout << "INCOMES:" << endl;
-    for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
-        if (itr->getDate() >= startDate && itr->getDate() <= endDate){
-            cout << itr->getIncomeId() << endl;
+    cout << "   >>> INCOMES <<<   " << endl;
+    cout << "---------------------" << endl;
+    for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+        if (itr->getDate() >= startDate && itr->getDate() <= endDate) {
             cout << dateOperation.convertDataFromIntToString(itr->getDate()) << endl;
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
+            sumIncomes += AuxiliaryMethods::conversionStringToDouble(itr->getAmount());
+            isIncome = true;
         }
     }
-        cout << "EXPENSES:" << endl;
-    for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
-        if (itr->getDate() >= startDate && itr->getDate() <= endDate){
-            cout << itr->getExpenseId() << endl;
+
+    if (!isIncome) {
+        cout << "There is no incomes in this period" << endl;
+    }
+
+    cout << "   >>> EXPENSES <<<   " << endl;
+    cout << "----------------------" << endl;
+    for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+        if (itr->getDate() >= startDate && itr->getDate() <= endDate) {
             cout << dateOperation.convertDataFromIntToString(itr->getDate()) << endl;
             cout << itr->getAmount() << endl;
             cout << itr->getItem() << endl;
             cout << "---------------" << endl;
+            sumExpenses += AuxiliaryMethods::conversionStringToDouble(itr->getAmount());
+            isExpense = true;
         }
     }
+
+    if (!isExpense) {
+        cout << "There is no expenes in this period" << endl;
+    }
+
+    cout << endl << "Sum of incomes = " << sumIncomes << endl;
+    cout << "Sum of expenses = " << sumExpenses << endl;
+    cout << "Balance between incomes and expenses = " << sumIncomes - sumExpenses << endl;
+    system("pause");
 }
 
 void TransactionMenager::sortIncomesTransaction() {
-    sort(incomes.begin(), incomes.end(), [](Income& a, Income& b){
-    return a.getDate() < b.getDate();
+    sort(incomes.begin(), incomes.end(), [](Income& a, Income& b) {
+        return a.getDate() < b.getDate();
     });
 }
 
 void TransactionMenager::sortExpensesTransaction() {
-    sort(expenses.begin(), expenses.end(), [](Expense& a, Expense& b){
-    return a.getDate() < b.getDate();
+    sort(expenses.begin(), expenses.end(), [](Expense& a, Expense& b) {
+        return a.getDate() < b.getDate();
     });
 }
 

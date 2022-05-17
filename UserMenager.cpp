@@ -18,7 +18,7 @@ User UserMenager::inputDataOfNewUser() {
     do {
         cout << "Enter login: ";
         user.setLogin(AuxiliaryMethods::loadLine());
-    } while (ifLoginExist(user.getLogin()) == true);
+    } while (ifLoginExist(user.getLogin()));
 
     cout << "Enter name: ";
     user.setName(AuxiliaryMethods::loadLine());
@@ -102,7 +102,6 @@ bool UserMenager::ifUserLoggedIn() {
     if (loggedUserId > 0) {
         return true;
     }
-
     return false;
 }
 

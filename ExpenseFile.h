@@ -18,6 +18,7 @@ public:
     ExpenseFile(string expenseFileName) : XMLFile(expenseFileName){};
     void addExpenseToFile(Expense expense);
     vector <Expense> loadExpenseFromFile(int loggedInUserID);
+    int getExpenseLastId();
 
 };
 

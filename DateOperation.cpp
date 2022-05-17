@@ -41,7 +41,7 @@ string DateOperation::setDateByUser() {
     cout << "Enter a date between 2000-01-01 and the last day of the current month in the correct format: rrrr-mm-dd (for example: 2004-04-05)" << endl;
     userDate = AuxiliaryMethods::loadLine();
     ifDateCorrect = isDateCorrect(userDate);
-    } while (ifDateCorrect == false);
+    } while (!ifDateCorrect);
 
     return userDate;
 }
@@ -54,7 +54,6 @@ bool DateOperation::isDateCorrect(string userDate) {
     int startingYear = 2000;
     int startingMonth = 1;
     int startingDay = 1;
-//int numberOfDaysInCurrentMonth = numberOfDaysInMonth(currentDate);
     int numberOfDaysInUserMonth = numberOfDaysInMonth(date);
 
     if (date.getYear() >= startingYear && date.getMonth() > 0 && date.getMonth() < 13 && date.getDay() > 0 && date.getDay() <= numberOfDaysInUserMonth) {
@@ -63,6 +62,10 @@ bool DateOperation::isDateCorrect(string userDate) {
         } else isDateCorrect = false;
     } else isDateCorrect = false;
 
+    if (!isDateCorrect){
+        cout << "The date provided is incorrect. Input a date once again." << endl;
+        cout << endl;
+    }
 return isDateCorrect;
 }
 
@@ -73,8 +76,6 @@ Date DateOperation::divideDate(string userDate) {
         date.setYear(atoi(userDate.substr(0,4).c_str()));
         date.setMonth(atoi(userDate.substr(5,2).c_str()));
         date.setDay(atoi(userDate.substr(8,2).c_str()));
-
-        //cout << date.getYear() << " " << date.getMonth() << " " << date.getDay() << endl;
     }
 
     return date;

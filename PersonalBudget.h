@@ -31,9 +31,17 @@ public:
     void logInUser();
     void logOutUser();
     void changePasswordOfLoggedUser();
+    bool ifUserLoggedIn();
 
     void addIncome();
     void addExpense();
+    void showBalanceCurrentMonth();
+    void showBalancePreviousMonth();
+    void showBalanceSelectedPeriod();
+
+    char showMainMenu();
+    char showUserMenu();
+
 
 };
 

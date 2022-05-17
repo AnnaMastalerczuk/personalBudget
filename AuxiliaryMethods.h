@@ -17,6 +17,7 @@ public:
    static int conversionStringToInt(string textString);
    static string conversionIntToString(int number);
    static string conversionDoubleToString(double number);
+   static string addingLastZeros(string text);
 };
 
 #endif

@@ -18,6 +18,7 @@ public:
     IncomeFile(string incomeFileName) : XMLFile(incomeFileName){};
     void addIncomeToFile(Income income);
     vector <Income> loadIncomeFromFile(int loggedInUserID);
+    int getIncomeLastId();
 };
 
 #endif
