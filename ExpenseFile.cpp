@@ -17,7 +17,6 @@ void ExpenseFile::addExpenseToFile(Expense expense) {
     xml.AddElem("USERID", expense.getUserId());
     xml.AddElem("DATE", dateOperation.convertDataFromIntToString(expense.getDate()));
     xml.AddElem("ITEM", expense.getItem());
-    //amount = AuxiliaryMethods::conversionDoubleToString(expense.getAmount());
     xml.AddElem("AMOUNT", expense.getAmount());
     xml.OutOfElem();
     xml.Save(getFileName());
@@ -48,7 +47,6 @@ vector <Expense> ExpenseFile::loadExpenseFromFile(int loggedInUserID) {
             xml.FindElem( "ITEM" );
             expense.setItem(xml.GetData());
             xml.FindElem( "AMOUNT" );
-            //amount = AuxiliaryMethods::conversionStringToDouble(xml.GetData());
             expense.setAmount(xml.GetData());
 
             expenses.push_back(expense);

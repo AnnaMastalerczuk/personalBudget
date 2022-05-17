@@ -17,7 +17,6 @@ void IncomeFile::addIncomeToFile(Income income) {
     xml.AddElem("USERID", income.getUserId());
     xml.AddElem("DATE", dateOperation.convertDataFromIntToString(income.getDate()));
     xml.AddElem("ITEM", income.getItem());
-    //amount = AuxiliaryMethods::conversionDoubleToString(income.getAmount());
     xml.AddElem("AMOUNT", income.getAmount());
     xml.OutOfElem();
     xml.Save(getFileName());
@@ -49,7 +48,6 @@ vector <Income> IncomeFile::loadIncomeFromFile(int loggedInUserID) {
             xml.FindElem( "ITEM" );
             income.setItem(xml.GetData());
             xml.FindElem( "AMOUNT" );
-            //amount = AuxiliaryMethods::conversionStringToDouble(xml.GetData());
             income.setAmount(xml.GetData());
 
             incomes.push_back(income);

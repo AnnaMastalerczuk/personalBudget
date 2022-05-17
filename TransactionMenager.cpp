@@ -28,7 +28,6 @@ Income TransactionMenager::inputDataOfNewIncome() {
     textString = AuxiliaryMethods::loadLine();
     textString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::replaceCommaWithDot(textString));
     income.setAmount(textString);
-    //income.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
 
     return income;
 
@@ -71,7 +70,6 @@ Expense TransactionMenager::inputDataOfNewExpense() {
     textString = AuxiliaryMethods::loadLine();
     textString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::replaceCommaWithDot(textString));
     expense.setAmount(textString);
-    //expense.setAmount(AuxiliaryMethods::conversionStringToDouble(AuxiliaryMethods::replaceCommaWithDot(textString)));
 
     return expense;
 }
@@ -121,6 +119,9 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
     sortExpensesTransaction();
     double sumIncomes = 0;
     double sumExpenses = 0;
+    string sumIncomesString = "";
+    string sumExpensesString = "";
+    string incomesMinusExpenses = "";
     bool isIncome = false;
     bool isExpense = false;
 
@@ -160,9 +161,12 @@ void TransactionMenager::showTransactionBalance(int startDate, int endDate) {
         cout << "There is no expenes in this period" << endl;
     }
 
-    cout << endl << "Sum of incomes = " << sumIncomes << endl;
-    cout << "Sum of expenses = " << sumExpenses << endl;
-    cout << "Balance between incomes and expenses = " << sumIncomes - sumExpenses << endl;
+    sumIncomesString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::conversionDoubleToString(sumIncomes));
+    sumExpensesString = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::conversionDoubleToString(sumExpenses));
+    incomesMinusExpenses = AuxiliaryMethods::addingLastZeros(AuxiliaryMethods::conversionDoubleToString(sumIncomes - sumExpenses));
+    cout << endl << "Sum of incomes = " << sumIncomesString << endl;
+    cout << "Sum of expenses = " << sumExpensesString << endl;
+    cout << "Balance between incomes and expenses = " << incomesMinusExpenses << endl;
     system("pause");
 }
 
